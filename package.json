@@ -1,0 +1,59 @@
+{
+  "name": "dsh-toutiao",
+  "version": "0.1.0",
+  "description": "今日头条热点、关键词搜索与半自动发布草稿（DSH 插件）。纯 HTTP 采集，免登录免签名；在设置面板里配置条数/关键词，可被其他插件调用取热点与搜索结果，支持定时抓取与一键写草稿。",
+  "type": "module",
+  "main": "./lib/index.js",
+  "files": [
+    "lib",
+    "src",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh-plugin",
+    "dsh",
+    "deepseek-harness",
+    "toutiao",
+    "news",
+    "hot"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*",
+    "@deepseek-ai/schemastery": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": {
+      "optional": true
+    },
+    "@deepseek-ai/schemastery": {
+      "optional": true
+    }
+  },
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./package.json": "./package.json"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "slots"
+      ],
+      "external": [
+        "react"
+      ]
+    }
+  },
+  "scripts": {
+    "check": "node test/syntax.mjs"
+  }
+}
